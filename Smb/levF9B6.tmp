@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cogpdvsd0qaon"]
+
+[ext_resource type="PackedScene" uid="uid://csnpo1xqu42th" path="res://assets/models/201 simple/201 - Simple/Simple.tscn" id="1_korag"]
+[ext_resource type="PackedScene" uid="uid://ek2s16g147bu" path="res://gachapon_ball.tscn" id="2_o6ywp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5kjw"]
+
+[sub_resource type="Sky" id="Sky_ip8ot"]
+sky_material = SubResource("ShaderMaterial_l5kjw")
+
+[sub_resource type="Environment" id="Environment_cnbf0"]
+background_mode = 1
+background_color = Color(0.371035, 0.728125, 0.825651, 1)
+sky = SubResource("Sky_ip8ot")
+ambient_light_color = Color(0.937255, 0.862745, 0.843137, 1)
+ambient_light_energy = 5.45
+
+[node name="Level" type="Node3D"]
+
+[node name="Simple" parent="." instance=ExtResource("1_korag")]
+
+[node name="Gachapon ball" parent="." instance=ExtResource("2_o6ywp")]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0, 5.12722, 78.4826)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cnbf0")

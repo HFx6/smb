@@ -1,0 +1,11 @@
+Model Information:
+* title:	Super Monkey Ball - Banana - Dole
+* source:	https://sketchfab.com/3d-models/super-monkey-ball-banana-dole-c69e479a2b724fef9be30f0097a6b492
+* author:	callion008 (https://sketchfab.com/callion008)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Super Monkey Ball - Banana - Dole" (https://sketchfab.com/3d-models/super-monkey-ball-banana-dole-c69e479a2b724fef9be30f0097a6b492) by callion008 (https://sketchfab.com/callion008) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,82 @@
+[gd_scene load_steps=17 format=3 uid="uid://cogpdvsd0qaon"]
+
+[ext_resource type="Shader" path="res://level.gdshader" id="1_e1jhv"]
+[ext_resource type="PackedScene" uid="uid://csnpo1xqu42th" path="res://assets/models/201 simple/201 - Simple/Simple.tscn" id="1_korag"]
+[ext_resource type="PackedScene" uid="uid://ek2s16g147bu" path="res://gachapon_ball.tscn" id="2_o6ywp"]
+
+[sub_resource type="Gradient" id="Gradient_88mn2"]
+offsets = PackedFloat32Array(0, 0.541667, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.583333, 0.583333, 0.583333, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5o472"]
+gradient = SubResource("Gradient_88mn2")
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_mcq87"]
+_data = [Vector2(0, 0), 0.0, 0.491823, 0, 1, Vector2(0.647959, 0.318681), 0.820513, 0.820513, 0, 0, Vector2(1, 1), 1.93534, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_j5wic"]
+curve = SubResource("Curve_mcq87")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wyrlp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wpydx"]
+seamless = true
+noise = SubResource("FastNoiseLite_wyrlp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vlexf"]
+fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wm6qu"]
+seamless = true
+noise = SubResource("FastNoiseLite_vlexf")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_16h3t"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ld6nv"]
+noise = SubResource("FastNoiseLite_16h3t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8emd"]
+shader = ExtResource("1_e1jhv")
+shader_parameter/clouds_samples = 32
+shader_parameter/shadow_sample = 4
+shader_parameter/clouds_density = 0.5
+shader_parameter/clouds_scale = 1.0
+shader_parameter/clouds_smoothness = 0.035
+shader_parameter/clouds_light_color = Color(1, 1, 1, 1)
+shader_parameter/clouds_shadow_intensity = 1.0
+shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_wm6qu")
+shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_wpydx")
+shader_parameter/cloud_curves = SubResource("CurveTexture_j5wic")
+shader_parameter/high_clouds_density = 0.2
+shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_ld6nv")
+shader_parameter/top_color = Color(0.349, 0.588, 1, 1)
+shader_parameter/bottom_color = Color(0.329, 0.969, 1, 1)
+shader_parameter/sun_scatter = Color(0.298, 0.298, 0.298, 1)
+shader_parameter/astro_tint = Color(0.9, 0.78, 0.62, 1)
+shader_parameter/astro_scale = 9.0
+shader_parameter/astro_intensity = 3.0
+shader_parameter/astro_sampler = SubResource("GradientTexture2D_5o472")
+shader_parameter/stars_intensity = 0.0
+shader_parameter/shooting_stars_intensity = 0.0
+shader_parameter/shooting_star_tint = null
+
+[sub_resource type="Sky" id="Sky_5oeqd"]
+sky_material = SubResource("ShaderMaterial_c8emd")
+
+[sub_resource type="Environment" id="Environment_cnbf0"]
+background_mode = 2
+background_color = Color(0.337255, 0.768627, 0.631373, 1)
+sky = SubResource("Sky_5oeqd")
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cnbf0")
+
+[node name="Map" parent="." instance=ExtResource("1_korag")]
+
+[node name="Player" parent="." instance=ExtResource("2_o6ywp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 194.184, 2504.21)
