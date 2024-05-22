@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu2yl624bqlrp"]
+
+[ext_resource type="PackedScene" uid="uid://cjq7xuur3o7c0" path="res://assets/models/gachapon_ball/scene.gltf" id="1_mm7d3"]
+
+[node name="scene" instance=ExtResource("1_mm7d3")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)

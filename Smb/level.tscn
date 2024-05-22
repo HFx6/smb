@@ -1,8 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://cogpdvsd0qaon"]
+[gd_scene load_steps=21 format=3 uid="uid://cogpdvsd0qaon"]
 
 [ext_resource type="Shader" path="res://level.gdshader" id="1_e1jhv"]
-[ext_resource type="PackedScene" uid="uid://csnpo1xqu42th" path="res://assets/models/201 simple/201 - Simple/Simple.tscn" id="1_korag"]
 [ext_resource type="PackedScene" uid="uid://ek2s16g147bu" path="res://gachapon_ball.tscn" id="2_o6ywp"]
+[ext_resource type="PackedScene" uid="uid://ccesxy7v1dk8b" path="res://assets/models/201 simple/201 - Simple/Simple2.tscn" id="3_tdews"]
+[ext_resource type="PackedScene" uid="uid://cvckurhxpgc4" path="res://banana.tscn" id="4_iiagx"]
+[ext_resource type="Texture2D" uid="uid://dlrv12p267jkr" path="res://assets/hudsprite.png" id="5_kqodp"]
+[ext_resource type="Texture2D" uid="uid://durax468t2hli" path="res://assets/icon4.png" id="7_jp3hp"]
+[ext_resource type="Script" path="res://BananaCounter.gd" id="7_yjfyo"]
 
 [sub_resource type="Gradient" id="Gradient_88mn2"]
 offsets = PackedFloat32Array(0, 0.541667, 1)
@@ -52,9 +56,9 @@ shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_wpydx")
 shader_parameter/cloud_curves = SubResource("CurveTexture_j5wic")
 shader_parameter/high_clouds_density = 0.2
 shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_ld6nv")
-shader_parameter/top_color = Color(0.349, 0.588, 1, 1)
-shader_parameter/bottom_color = Color(0.329, 0.969, 1, 1)
-shader_parameter/sun_scatter = Color(0.298, 0.298, 0.298, 1)
+shader_parameter/top_color = Color(0.496037, 0.79836, 0.921327, 1)
+shader_parameter/bottom_color = Color(0.65381, 0.870784, 0.94669, 1)
+shader_parameter/sun_scatter = Color(0.263046, 0.30709, 0.321368, 1)
 shader_parameter/astro_tint = Color(0.9, 0.78, 0.62, 1)
 shader_parameter/astro_scale = 9.0
 shader_parameter/astro_intensity = 3.0
@@ -76,7 +80,201 @@ sky = SubResource("Sky_5oeqd")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cnbf0")
 
-[node name="Map" parent="." instance=ExtResource("1_korag")]
+[node name="Gachapon ball" parent="." instance=ExtResource("2_o6ywp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.68194, 58.8024)
 
-[node name="Player" parent="." instance=ExtResource("2_o6ywp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 194.184, 2504.21)
+[node name="Node3D" parent="." instance=ExtResource("3_tdews")]
+
+[node name="Bananas" type="Node3D" parent="."]
+
+[node name="Banana" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -4.93697, 30)
+rot_speed = 2.5
+
+[node name="Banana2" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -4.93697, 10.716)
+rot_speed = 2.5
+
+[node name="Banana3" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -4.93697, -17.1472)
+rot_speed = 2.5
+
+[node name="Banana4" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -4.93697, -49.9331)
+rot_speed = 2.5
+
+[node name="Banana5" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -4.93697, -72.7997)
+rot_speed = 2.5
+
+[node name="Banana6" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, 4.6763, -94.391)
+rot_speed = 2.5
+
+[node name="Banana7" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, 10.1932, -113.779)
+rot_speed = 2.5
+
+[node name="Banana8" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, 10.1932, -130.769)
+rot_speed = 2.5
+
+[node name="Banana9" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -23.7014, -150.848)
+rot_speed = 2.5
+
+[node name="Banana10" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -23.7014, -175.127)
+rot_speed = 2.5
+
+[node name="Banana11" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -23.7014, -199.734)
+rot_speed = 2.5
+
+[node name="Banana12" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -23.7014, -224.098)
+rot_speed = 2.5
+
+[node name="Banana13" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 0, -27.354, -242.791)
+rot_speed = 2.5
+
+[node name="Banana14" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 31.2823, -23.9476, -237.119)
+rot_speed = 2.5
+
+[node name="Banana15" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, -31.5354, -23.9476, -237.119)
+rot_speed = 2.5
+
+[node name="Banana16" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, -35.14, -23.9476, -305.705)
+rot_speed = 2.5
+
+[node name="Banana17" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, 35.6402, -23.9476, -305.705)
+rot_speed = 2.5
+
+[node name="Banana18" parent="Bananas" instance=ExtResource("4_iiagx")]
+transform = Transform3D(-2.07411e-07, 0, -4.745, 0, 4.745, 0, 4.745, 0, -2.07411e-07, -1.29107, -23.9476, -320.565)
+rot_speed = 2.5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Sprite2D7" type="Sprite2D" parent="Control"]
+position = Vector2(1061, 56)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(8, 60, 76, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(1022, 43)
+texture = ExtResource("5_kqodp")
+centered = false
+region_enabled = true
+region_rect = Rect2(99, 61, 24, 24)
+
+[node name="BananaCounter" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 28.0
+offset_right = 1084.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 38
+text = "Q"
+script = ExtResource("7_yjfyo")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Control"]
+position = Vector2(65, 54)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(8, 4, 60, 24)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control"]
+position = Vector2(65, 54)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(13, 35, 50, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control"]
+position = Vector2(548, 81)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(146, 99, 112, 91)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Control"]
+position = Vector2(85, 597)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(9, 160, 80, 32)
+
+[node name="Sprite2D11" type="Sprite2D" parent="Control"]
+position = Vector2(61, 598)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(13, 201, 24, 24)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Control"]
+position = Vector2(1065, 115)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(208, 8, 56, 56)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Control"]
+position = Vector2(548, 81)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(127, 202, 76, 76)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Control"]
+position = Vector2(546, 48)
+texture = ExtResource("5_kqodp")
+region_enabled = true
+region_rect = Rect2(280, 99, 53, 24)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+position = Vector2(1065, 115)
+rotation = -0.193732
+scale = Vector2(0.74, 0.74)
+texture = ExtResource("7_jp3hp")
+
+[connection signal="banana_collected" from="Bananas/Banana" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana" to="Bananas/Banana" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana2" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana2" to="Bananas/Banana2" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana3" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana3" to="Bananas/Banana3" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana4" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana4" to="Bananas/Banana4" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana5" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana5" to="Bananas/Banana5" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana6" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana6" to="Bananas/Banana6" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana7" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana7" to="Bananas/Banana7" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana8" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana8" to="Bananas/Banana8" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana9" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana9" to="Bananas/Banana9" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana10" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana10" to="Bananas/Banana10" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana11" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana11" to="Bananas/Banana11" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana12" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana12" to="Bananas/Banana12" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana13" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana13" to="Bananas/Banana13" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana14" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana14" to="Bananas/Banana14" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana15" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana15" to="Bananas/Banana15" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana16" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana16" to="Bananas/Banana16" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana17" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana17" to="Bananas/Banana17" method="_on_body_entered"]
+[connection signal="banana_collected" from="Bananas/Banana18" to="Control/BananaCounter" method="_on_banana_collected"]
+[connection signal="body_entered" from="Bananas/Banana18" to="Bananas/Banana18" method="_on_body_entered"]

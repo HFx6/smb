@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccesxy7v1dk8b"]
+
+[ext_resource type="Material" uid="uid://cvhnwu1r11g4h" path="res://assets/models/201 simple/201 - Simple/sides.tres" id="1_no5j1"]
+[ext_resource type="Material" uid="uid://c67sloi58ny1n" path="res://assets/models/201 simple/201 - Simple/platform.tres" id="2_h6e5n"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(13.845, 0, 0, 0, 13.845, 0, 0, 0, 13.845, 0, 0, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.176027, -0.371582, 0.0419264)
+size = Vector3(4.19774, 0.256836, 11.6393)
+material = ExtResource("1_no5j1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0569458, 0.374083, -0.27742)
+operation = 2
+size = Vector3(3.74231, 1, 11.6772)
+material = ExtResource("2_h6e5n")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0579268, 0.471491, -11.1587)
+size = Vector3(4.08398, 0.097168, 4.76556)
+material = ExtResource("2_h6e5n")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0482553, 0)
+operation = 2
+radius = 1.381
+height = 0.724
+sides = 15
+material = ExtResource("1_no5j1")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.70379, -0.46698, -7.7703)
+polygon = PackedVector2Array(-2.01546, -0.027988, 0, 1, 1, 1, 1, 0)
+depth = 3.63
+material = ExtResource("2_h6e5n")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1905, -19.7425)
+radius = 3.813
+height = 0.654
+material = ExtResource("2_h6e5n")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0270054, 0.23719, 6.50584)
+size = Vector3(1.51288, 0.177155, 8.5957)
+material = ExtResource("2_h6e5n")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.98956, 0)
+operation = 2
+radius = 9.323
+radial_segments = 15
+rings = 10
+material = ExtResource("2_h6e5n")
