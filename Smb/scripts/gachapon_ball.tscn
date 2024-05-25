@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ek2s16g147bu"]
+
+[ext_resource type="Script" path="res://scripts/Camera.gd" id="2_6vriv"]
+[ext_resource type="PackedScene" uid="uid://cjq7xuur3o7c0" path="res://assets/models/gachapon_ball/scene.gltf" id="3_r5rp5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jwcrl"]
+
+[node name="Gachapon ball" type="Node3D"]
+
+[node name="CameraContainer" type="Node3D" parent="."]
+script = ExtResource("2_6vriv")
+
+[node name="HRotation" type="Node3D" parent="CameraContainer"]
+
+[node name="VRotation" type="Node3D" parent="CameraContainer/HRotation"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraContainer/HRotation/VRotation"]
+spring_length = 10.0
+margin = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraContainer/HRotation/VRotation/SpringArm3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+current = true
+
+[node name="Player" type="Node3D" parent="."]
+
+[node name="ball" parent="Player" instance=ExtResource("3_r5rp5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("SphereShape3D_jwcrl")

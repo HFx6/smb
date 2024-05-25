@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/scene.gltf-e9e6b52492577ec106a5d837a3284469.s
 
 [params]
 
-nodes/root_type="RigidBody3D"
+nodes/root_type="Node3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
