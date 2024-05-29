@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlccxdf5ojab0"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_7dfaw"]
+[ext_resource type="Script" path="res://scripts/Camera.gd" id="2_payjc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dfege"]
+
+[sub_resource type="Shader" id="Shader_6j8uq"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+uniform vec4 top_color  = vec4(1.0, 1.0, 1.0, 1.0); // White
+uniform vec4 bottom_color  = vec4(0.0, 0.0, 1.0, 1.0); // Blue
+uniform float shininess = 0.8; // Shininess factor
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	 float y = UV.y;
+    if (y > 0.5) {
+        ALBEDO = top_color.rgb;
+    } else {
+        ALBEDO = bottom_color.rgb;
+    }
+    ROUGHNESS = 1.0 - shininess; // Inverse of shininess
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhb7n"]
+render_priority = 0
+shader = SubResource("Shader_6j8uq")
+shader_parameter/albedo = Color(1, 1, 1, 0.443137)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.213
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 1.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/top_color = Vector4(1, 1, 1, 1)
+shader_parameter/bottom_color = Vector4(0, 0, 1, 1)
+shader_parameter/shininess = 0.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_pjru7"]
+material = SubResource("ShaderMaterial_nhb7n")
+radius = 2.015
+height = 4.03
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 4096
+angular_damp = 0.01
+script = ExtResource("1_7dfaw")
+movement_speed = 415.0
+max_velocity = 674.665
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(4.055, 0, 0, 0, 4.055, 0, 0, 0, 4.055, 0, 0, 0)
+shape = SubResource("SphereShape3D_dfege")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_pjru7")
+
+[node name="CameraContainer" type="Node3D" parent="."]
+script = ExtResource("2_payjc")
+
+[node name="HRotation" type="Node3D" parent="CameraContainer"]
+
+[node name="VRotation" type="Node3D" parent="CameraContainer/HRotation"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraContainer/HRotation/VRotation"]
+spring_length = 10.0
+margin = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraContainer/HRotation/VRotation/SpringArm3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+current = true
+
+[node name="DirectionNode" type="Node3D" parent="CameraContainer/HRotation/VRotation/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0147475, -0.999891, 0, 0.999891, 0.0147475, 0, 0, 0)

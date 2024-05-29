@@ -4,19 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://cr2ymyovmsnvn" path="res://assets/models/banana/scene.gltf" id="1_sx3bh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_btjvs"]
-height = 1.26899
-radius = 0.772776
+height = 0.860343
+radius = 0.498929
 
 [node name="Banana" type="Area3D"]
 collision_mask = 4096
 script = ExtResource("1_gjrp3")
 
 [node name="BananaMesh" parent="." instance=ExtResource("1_sx3bh")]
+transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_btjvs")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

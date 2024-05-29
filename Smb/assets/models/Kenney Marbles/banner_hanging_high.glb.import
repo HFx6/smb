@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cjq7xuur3o7c0"
-path="res://.godot/imported/scene.gltf-e9e6b52492577ec106a5d837a3284469.scn"
+uid="uid://dd07kbo8v1k4p"
+path="res://.godot/imported/banner_hanging_high.glb-70073472ea47d4a562c08d08330533ad.scn"
 
 [deps]
 
-source_file="res://assets/models/gachapon_ball/scene.gltf"
-dest_files=["res://.godot/imported/scene.gltf-e9e6b52492577ec106a5d837a3284469.scn"]
+source_file="res://assets/models/Kenney Marbles/banner_hanging_high.glb"
+dest_files=["res://.godot/imported/banner_hanging_high.glb-70073472ea47d4a562c08d08330533ad.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
+nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

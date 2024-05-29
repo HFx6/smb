@@ -1,15 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://cogpdvsd0qaon"]
+[gd_scene load_steps=25 format=3 uid="uid://cogpdvsd0qaon"]
 
 [ext_resource type="Shader" path="res://scripts/level.gdshader" id="1_0mbwx"]
-[ext_resource type="PackedScene" uid="uid://ccesxy7v1dk8b" path="res://assets/models/201 simple/201 - Simple/Simple2.tscn" id="2_n5jw8"]
+[ext_resource type="PackedScene" uid="uid://ccesxy7v1dk8b" path="res://assets/models/201 simple/201 - Simple/Map_01.tscn" id="2_n5jw8"]
 [ext_resource type="PackedScene" uid="uid://cvckurhxpgc4" path="res://Banana.tscn" id="3_f0mx0"]
 [ext_resource type="Texture2D" uid="uid://dlrv12p267jkr" path="res://assets/hud/hudsprite.png" id="4_k4gny"]
 [ext_resource type="FontFile" uid="uid://btaoybb1goebk" path="res://assets/hud/counter_font.tres" id="5_vskjt"]
 [ext_resource type="Script" path="res://scripts/BananaCounter.gd" id="6_ofjbu"]
 [ext_resource type="Texture2D" uid="uid://durax468t2hli" path="res://assets/hud/player.png" id="7_vkuml"]
-[ext_resource type="PackedScene" uid="uid://eh3qaf652agd" path="res://assets/models/gachapon_ball/Player.tscn" id="8_h2thh"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="8_uh64w"]
 [ext_resource type="FontFile" uid="uid://b5vhkmqp2fklr" path="res://assets/hud/timer_top.tres" id="9_4plqa"]
+[ext_resource type="PackedScene" uid="uid://dlccxdf5ojab0" path="res://GodotBall.tscn" id="10_771ii"]
+[ext_resource type="Script" path="res://scripts/GoalHud.gd" id="10_f6xlf"]
 
 [sub_resource type="Gradient" id="Gradient_88mn2"]
 offsets = PackedFloat32Array(0, 0.541667, 1)
@@ -59,7 +60,7 @@ shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_wpydx")
 shader_parameter/cloud_curves = SubResource("CurveTexture_j5wic")
 shader_parameter/high_clouds_density = 0.2
 shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_ld6nv")
-shader_parameter/top_color = Color(0.496037, 0.79836, 0.921327, 1)
+shader_parameter/top_color = Color(0.187254, 0.249519, 0.961592, 1)
 shader_parameter/bottom_color = Color(0.65381, 0.870784, 0.94669, 1)
 shader_parameter/sun_scatter = Color(0.263046, 0.30709, 0.321368, 1)
 shader_parameter/astro_tint = Color(0.9, 0.78, 0.62, 1)
@@ -162,17 +163,17 @@ rot_speed = 2.5
 [node name="Hud" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
+offset_right = 864.0
 offset_bottom = 648.0
 
 [node name="Sprite2D7" type="Sprite2D" parent="Hud"]
-position = Vector2(1061, 48)
+position = Vector2(766, 48)
 texture = ExtResource("4_k4gny")
 region_enabled = true
 region_rect = Rect2(8, 60, 76, 24)
 
 [node name="Sprite2D" type="Sprite2D" parent="Hud"]
-position = Vector2(1020, 36)
+position = Vector2(725, 36)
 texture = ExtResource("4_k4gny")
 centered = false
 region_enabled = true
@@ -180,9 +181,9 @@ region_rect = Rect2(99, 61, 24, 24)
 
 [node name="BananaCounter" type="Label" parent="Hud"]
 layout_mode = 0
-offset_left = 1045.0
+offset_left = 750.0
 offset_top = 37.0
-offset_right = 1104.0
+offset_right = 809.0
 offset_bottom = 59.0
 theme_override_fonts/font = ExtResource("5_vskjt")
 theme_override_font_sizes/font_size = 13
@@ -202,7 +203,7 @@ region_enabled = true
 region_rect = Rect2(13, 35, 50, 16)
 
 [node name="Sprite2D4" type="Sprite2D" parent="Hud"]
-position = Vector2(576, 81)
+position = Vector2(444, 81.5)
 texture = ExtResource("4_k4gny")
 region_enabled = true
 region_rect = Rect2(146, 99, 112, 91)
@@ -220,25 +221,25 @@ region_enabled = true
 region_rect = Rect2(13, 201, 24, 24)
 
 [node name="Sprite2D9" type="Sprite2D" parent="Hud"]
-position = Vector2(1065, 115)
+position = Vector2(775, 119)
 texture = ExtResource("4_k4gny")
 region_enabled = true
 region_rect = Rect2(208, 8, 56, 56)
 
 [node name="Sprite2D8" type="Sprite2D" parent="Hud"]
-position = Vector2(576, 81)
+position = Vector2(444, 81.5)
 texture = ExtResource("4_k4gny")
 region_enabled = true
 region_rect = Rect2(127, 202, 76, 76)
 
 [node name="Sprite2D5" type="Sprite2D" parent="Hud"]
-position = Vector2(576, 48)
+position = Vector2(444, 48.5)
 texture = ExtResource("4_k4gny")
 region_enabled = true
 region_rect = Rect2(280, 99, 53, 24)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Hud"]
-position = Vector2(1065, 115)
+position = Vector2(775, 119)
 rotation = -0.193732
 scale = Vector2(0.74, 0.74)
 texture = ExtResource("7_vkuml")
@@ -251,36 +252,45 @@ script = ExtResource("8_uh64w")
 
 [node name="Timer" type="Label" parent="Hud/Container"]
 layout_mode = 2
-offset_left = 533.0
-offset_top = 61.0
-offset_right = 623.0
-offset_bottom = 101.0
+offset_left = 401.0
+offset_top = 61.5
+offset_right = 491.0
+offset_bottom = 101.5
 theme_override_fonts/font = ExtResource("9_4plqa")
 theme_override_font_sizes/font_size = 12
 text = "000"
 
 [node name="Timerms" type="Label" parent="Hud/Container"]
 layout_mode = 2
-offset_left = 562.0
-offset_top = 102.0
-offset_right = 598.0
-offset_bottom = 125.0
+offset_left = 430.0
+offset_top = 102.5
+offset_right = 466.0
+offset_bottom = 125.5
 theme_override_fonts/font = ExtResource("9_4plqa")
 theme_override_font_sizes/font_size = 7
 text = "00"
 
 [node name="Sprite2D" type="Sprite2D" parent="Hud/Container"]
-position = Vector2(560, 115)
+position = Vector2(428, 115.5)
 texture = ExtResource("4_k4gny")
 region_enabled = true
 region_rect = Rect2(308, 268, 33, 21)
 
-[node name="Player" parent="." instance=ExtResource("8_h2thh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.1868, 68.1294)
+[node name="Goal" type="Sprite2D" parent="Hud"]
+position = Vector2(429, 327)
+texture = ExtResource("4_k4gny")
+region_enabled = true
+region_rect = Rect2(385, 10, 253, 58)
+script = ExtResource("10_f6xlf")
 
 [node name="WorldLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.7069, 0)
+transform = Transform3D(1, 0, 0, 0, -0.0494078, 0.998779, 0, -0.998779, -0.0494078, 0, 11.7069, 0)
+light_color = Color(0.807843, 0.756863, 0.219608, 1)
 
+[node name="Player" parent="." instance=ExtResource("10_771ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -249.244)
+
+[connection signal="goal_reached" from="Map/Goal wrapper/Goal" to="Hud/Goal" method="_on_goal_reached"]
 [connection signal="banana_collected" from="Bananas/Banana" to="Hud/BananaCounter" method="_on_banana_collected"]
 [connection signal="body_entered" from="Bananas/Banana" to="Bananas/Banana" method="_on_body_entered"]
 [connection signal="banana_collected" from="Bananas/Banana2" to="Hud/BananaCounter" method="_on_banana_collected"]
@@ -317,3 +327,5 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.
 [connection signal="body_entered" from="Bananas/Banana17" to="Bananas/Banana17" method="_on_body_entered"]
 [connection signal="banana_collected" from="Bananas/Banana18" to="Hud/BananaCounter" method="_on_banana_collected"]
 [connection signal="body_entered" from="Bananas/Banana18" to="Bananas/Banana18" method="_on_body_entered"]
+
+[editable path="Map"]
