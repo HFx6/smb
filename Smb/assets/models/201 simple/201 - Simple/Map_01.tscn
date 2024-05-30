@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://cvhnwu1r11g4h" path="res://assets/models/201 simple/201 - Simple/sides.tres" id="1_no5j1"]
 [ext_resource type="Material" uid="uid://c67sloi58ny1n" path="res://assets/models/201 simple/201 - Simple/platform.tres" id="2_h6e5n"]
 [ext_resource type="PackedScene" uid="uid://dd07kbo8v1k4p" path="res://assets/models/Kenney Marbles/banner_hanging_high.glb" id="3_mhxl0"]
-[ext_resource type="Script" path="res://scripts/goal.gd" id="4_mpfxq"]
+[ext_resource type="Script" path="res://scripts/Goal.gd" id="4_mpfxq"]
 [ext_resource type="Script" path="res://scripts/OOB.gd" id="5_a7kwc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wo4q8"]
@@ -12,6 +12,7 @@ size = Vector3(9, 11.295, 0.001)
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hqy5r"]
 initial_velocity_max = 17.55
 gravity = Vector3(0, -17.155, 0)
+color = Color(0.845996, 0.371769, 0.521634, 1)
 hue_variation_max = 1.0
 collision_mode = 1
 collision_friction = 0.36
@@ -25,7 +26,7 @@ grow_amount = -5.793
 [sub_resource type="QuadMesh" id="QuadMesh_vo172"]
 lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("StandardMaterial3D_jflws")
-size = Vector2(1.125, 1)
+size = Vector2(0.7, 0.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yfu6h"]
 size = Vector3(696.385, 33.7206, 1155.77)
@@ -102,7 +103,7 @@ shape = SubResource("BoxShape3D_wo4q8")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Goal wrapper"]
 transform = Transform3D(-0.000802962, -1, 0, 1, -0.000802962, 0, 0, 0, 1, 0, 9.69737, 0)
 emitting = false
-amount = 35
+amount = 50
 lifetime = 3.05
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_hqy5r")

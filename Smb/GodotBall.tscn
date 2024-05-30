@@ -85,10 +85,10 @@ height = 4.03
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 4096
-angular_damp = 0.01
+mass = 1.38
+gravity_scale = 2.5
+angular_damp = 7.0
 script = ExtResource("1_7dfaw")
-movement_speed = 415.0
-max_velocity = 674.665
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(4.055, 0, 0, 0, 4.055, 0, 0, 0, 4.055, 0, 0, 0)

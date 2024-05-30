@@ -1,30 +1,31 @@
 extends RigidBody3D
 
-@export var movement_speed : float = 300
-@export var max_velocity : float = 500
-
 @onready var direction_node = $"../CameraContainer/HRotation/VRotation/SpringArm3D/DirectionNode" as Node3D
 
-func _physics_process(delta):
-	limit_velocity()
-	movement(delta)
-	pass
-	
-func limit_velocity():
-	if linear_velocity.length() > max_velocity:
-		linear_velocity = linear_velocity.normalized() * max_velocity
+# Variables for controlling the torque
+var torque_strength: float = 10.0
 
-func movement(delta):
-	var f_input = Input.get_action_raw_strength("backwards") - Input.get_action_raw_strength("forward")
-	var h_input = Input.get_action_raw_strength("right") - Input.get_action_raw_strength("left")
-	
-	
+func _physics_process(delta: float) -> void:
+	# Get the raw input strength for forward, backward, left, and right actions
+	var f_input = Input.get_action_raw_strength("left") - Input.get_action_raw_strength("right")
+	var h_input = Input.get_action_raw_strength("backwards") - Input.get_action_raw_strength("forward")
+
+	# Get the direction from the DirectionNode (which is based on the camera)
 	var direction_transform = direction_node.global_transform
-	
+
+	# Get the camera's local x and z axes
 	var relative_direction_z = direction_transform.basis.z.normalized()
 	var relative_direction_x = direction_transform.basis.x.normalized()
-	
+
+	# Calculate the direction vectors based on input
 	var direction_f = f_input * relative_direction_z
 	var direction_h = h_input * relative_direction_x
-	apply_central_force((direction_f + direction_h) * movement_speed * delta)
-	pass
+	
+	# Combine the directions to get the total direction
+	var total_direction = (direction_f + direction_h).normalized()
+
+	# Calculate the torque to be applied
+	var torque = total_direction * torque_strength
+
+	# Apply the torque for movement
+	apply_torque_impulse(torque)

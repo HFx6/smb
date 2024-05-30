@@ -288,7 +288,7 @@ transform = Transform3D(1, 0, 0, 0, -0.0494078, 0.998779, 0, -0.998779, -0.04940
 light_color = Color(0.807843, 0.756863, 0.219608, 1)
 
 [node name="Player" parent="." instance=ExtResource("10_771ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -249.244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 58.756)
 
 [connection signal="goal_reached" from="Map/Goal wrapper/Goal" to="Hud/Goal" method="_on_goal_reached"]
 [connection signal="banana_collected" from="Bananas/Banana" to="Hud/BananaCounter" method="_on_banana_collected"]
