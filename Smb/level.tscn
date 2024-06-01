@@ -288,9 +288,10 @@ transform = Transform3D(1, 0, 0, 0, -0.0494078, 0.998779, 0, -0.998779, -0.04940
 light_color = Color(0.807843, 0.756863, 0.219608, 1)
 
 [node name="Player" parent="." instance=ExtResource("10_771ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 58.756)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.8577, 58.756)
 
 [connection signal="goal_reached" from="Map/Goal wrapper/Goal" to="Hud/Goal" method="_on_goal_reached"]
+[connection signal="goal_reached" from="Map/Goal wrapper/Goal" to="Player/RigidBody3D/Sketchfab_Scene" method="_on_goal_reached"]
 [connection signal="banana_collected" from="Bananas/Banana" to="Hud/BananaCounter" method="_on_banana_collected"]
 [connection signal="body_entered" from="Bananas/Banana" to="Bananas/Banana" method="_on_body_entered"]
 [connection signal="banana_collected" from="Bananas/Banana2" to="Hud/BananaCounter" method="_on_banana_collected"]
@@ -329,3 +330,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 58.756)
 [connection signal="body_entered" from="Bananas/Banana18" to="Bananas/Banana18" method="_on_body_entered"]
 
 [editable path="Map"]
+[editable path="Player"]
+[editable path="Player/RigidBody3D/Sketchfab_Scene"]

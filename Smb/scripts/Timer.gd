@@ -3,7 +3,7 @@ extends Control
 var timer: Timer
 var seconds_label: Label
 var milliseconds_label: Label
-var seconds: float = 65.0
+var seconds: float = 25.0
 
 func _ready():
 	timer = Timer.new()

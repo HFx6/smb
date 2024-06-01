@@ -16,6 +16,7 @@ func _process(delta):
 
 func _on_body_entered(body: RigidBody3D):
 	$Timer.start()
+	$AudioStreamPlayer.play()
 	print("collect!")
 
 

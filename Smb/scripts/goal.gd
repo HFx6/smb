@@ -8,4 +8,5 @@ func _ready():
 func _on_body_entered(body: RigidBody3D):
 	emit_signal("goal_reached")
 	print("GOAL!!!!")
+	$"../AudioStreamPlayer".play()
 	$"../GPUParticles3D".emitting = true

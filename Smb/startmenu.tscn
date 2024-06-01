@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/Start.gd" id="2_qqvlh"]
 [ext_resource type="Texture2D" uid="uid://b4becka28v7u2" path="res://assets/hud/logo.png" id="2_ufuup"]
 [ext_resource type="Script" path="res://scripts/Quit.gd" id="3_3mkya"]
-[ext_resource type="Script" path="res://scripts/logo.gd" id="3_tmeuy"]
+[ext_resource type="Script" path="res://scripts/Logo.gd" id="3_tmeuy"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlccxdf5ojab0"]
+[gd_scene load_steps=8 format=3 uid="uid://dlccxdf5ojab0"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_7dfaw"]
+[ext_resource type="PackedScene" uid="uid://dls5gfqa3j0ec" path="res://GodotModel.tscn" id="2_3jom8"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="2_payjc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dfege"]
@@ -87,8 +88,25 @@ height = 4.03
 collision_layer = 4096
 mass = 1.38
 gravity_scale = 2.5
+linear_damp = 0.01
 angular_damp = 7.0
 script = ExtResource("1_7dfaw")
+
+[node name="Sketchfab_Scene" parent="RigidBody3D" instance=ExtResource("2_3jom8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1.67629, 0)
+
+[node name="Skeleton3D" parent="RigidBody3D/Sketchfab_Scene/Sketchfab_model/root/GLTF_SceneRootNode/RobotArmature_29/GLTF_created_0" index="0"]
+bones/1/position = Vector3(8.26265e-18, 0.90683, 0.0298551)
+bones/2/rotation = Quaternion(0.0294489, -1.52097e-14, 7.02117e-09, 0.999566)
+bones/5/position = Vector3(-2.88374e-16, 0.176079, -0.0108779)
+bones/9/position = Vector3(9.98369e-08, 0.0857493, 0.418746)
+bones/9/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
+bones/10/rotation = Quaternion(-0.505315, -0.477247, -0.50418, 0.512538)
+bones/11/rotation = Quaternion(0.0194111, 0.743406, -0.0238222, 0.668134)
+bones/14/rotation = Quaternion(-0.505315, 0.477247, 0.50418, 0.512538)
+bones/15/rotation = Quaternion(0.0194111, -0.743406, 0.0238222, 0.668134)
+bones/20/rotation = Quaternion(-0.492808, 0.0026219, -0.00521294, 0.870119)
+bones/24/rotation = Quaternion(-0.492808, -0.00262191, 0.00521295, 0.870119)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(4.055, 0, 0, 0, 4.055, 0, 0, 0, 4.055, 0, 0, 0)
@@ -114,3 +132,5 @@ current = true
 
 [node name="DirectionNode" type="Node3D" parent="CameraContainer/HRotation/VRotation/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.0147475, -0.999891, 0, 0.999891, 0.0147475, 0, 0, 0)
+
+[editable path="RigidBody3D/Sketchfab_Scene"]

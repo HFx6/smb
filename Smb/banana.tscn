@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvckurhxpgc4"]
+[gd_scene load_steps=5 format=3 uid="uid://cvckurhxpgc4"]
 
 [ext_resource type="Script" path="res://scripts/banana.gd" id="1_gjrp3"]
 [ext_resource type="PackedScene" uid="uid://cr2ymyovmsnvn" path="res://assets/models/banana/scene.gltf" id="1_sx3bh"]
+[ext_resource type="AudioStream" uid="uid://3cwxd1w3rl0g" path="res://assets/sounds/pickup.mp3" id="3_edh43"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_btjvs"]
 height = 0.860343
@@ -19,5 +20,9 @@ shape = SubResource("CylinderShape3D_btjvs")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_edh43")
+volume_db = -31.718
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
